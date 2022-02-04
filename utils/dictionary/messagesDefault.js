@@ -3,8 +3,8 @@ module.exports = {
   userAlreadyRegistered: 'User already registered',
   incorrectData: 'Incorrect username or password',
   allFields: 'All fields must be filled',
-  jwtMalformed: 'jwt malformed',
-  recipeNotFound: 'recipe not found',
-  missingAuth: 'missing auth token',
+  jwtMalformed: 'Expired or invalid token',
+  usersNotFound: 'Users not found',
+  missingAuth: 'Token not found',
   onlyAdmins: 'Only admins can register new admins',
 };
