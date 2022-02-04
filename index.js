@@ -1,6 +1,7 @@
 const express = require('express');
 const user = require('./routers/users.route');
 const errorMiddleware = require('./middlewares/errorMiddleware'); 
+const login = require('./routers/login.router');
 
 const app = express();
 app.use(express.json());
@@ -12,6 +13,7 @@ app.get('/', (request, response) => {
 });
 
 app.use('/user', user);
+app.use('/login', login);
 app.use(errorMiddleware);
 
 app.listen(PORT, () => console.log(`Ouvindo na porta ${PORT}!`));
