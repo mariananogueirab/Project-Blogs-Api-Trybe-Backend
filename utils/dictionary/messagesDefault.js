@@ -5,6 +5,7 @@ module.exports = {
   allFields: 'All fields must be filled',
   jwtMalformed: 'Expired or invalid token',
   usersNotFound: 'Users not found',
+  userNotFound: 'User does not exist',
   missingAuth: 'Token not found',
   onlyAdmins: 'Only admins can register new admins',
 };
