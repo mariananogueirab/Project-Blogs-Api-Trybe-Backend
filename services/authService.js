@@ -1,6 +1,7 @@
 const jwt = require('jsonwebtoken');
+require('dotenv/config');
 
-const API_SECRET = 'ABC123456';
+const API_SECRET = process.env.JWT_SECRET;
 
 const JWT_CONFIG = {
   expiresIn: 3600,
