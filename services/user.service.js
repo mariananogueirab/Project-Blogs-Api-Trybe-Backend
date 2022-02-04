@@ -8,7 +8,7 @@ const { generateToken } = require('./authService');
 const userSchema = Joi.object({
   displayName: Joi.string().min(8).required(),
   email: Joi.string()
-  .email().required(), // unico
+  .email({ minDomainSegments: 2, tlds: { allow: ['com', 'net'] } }).required(),
   password: Joi.string().length(6).required(),
 });
 
