@@ -1,7 +1,7 @@
 const Joi = require('joi');
 const { Category } = require('../models');
-const { categoryAlreadyExists } = require('../utils/dictionary/messagesDefault');
-const { badRequest, conflict } = require('../utils/dictionary/statusCode');
+const { categoryAlreadyExists, categoriesNotFound } = require('../utils/dictionary/messagesDefault');
+const { badRequest, conflict, notFound } = require('../utils/dictionary/statusCode');
 const errorHandling = require('../utils/functions/errorHandling');
 
 const categorySchema = Joi.object({
@@ -28,6 +28,15 @@ const categoryCreate = async (name) => {
   return category.dataValues;
 };
 
+const findCategories = async () => {
+  const categories = await Category.findAll();
+
+  if (!categories) throw errorHandling(notFound, categoriesNotFound);
+
+  return categories;
+};
+
 module.exports = {
   categoryCreate,
+  findCategories,
 };

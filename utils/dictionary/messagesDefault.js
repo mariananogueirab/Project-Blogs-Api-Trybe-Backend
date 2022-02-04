@@ -9,4 +9,5 @@ module.exports = {
   missingAuth: 'Token not found',
   onlyAdmins: 'Only admins can register new admins',
   categoryAlreadyExists: 'Category already exists',
+  categoriesNotFound: 'Categories not found',
 };
