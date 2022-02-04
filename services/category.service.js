@@ -1,6 +1,9 @@
 const Joi = require('joi');
 const { Category } = require('../models');
-const { categoryAlreadyExists, categoriesNotFound } = require('../utils/dictionary/messagesDefault');
+const {
+  categoryAlreadyExists,
+  categoriesNotFound,
+} = require('../utils/dictionary/messagesDefault');
 const { badRequest, conflict, notFound } = require('../utils/dictionary/statusCode');
 const errorHandling = require('../utils/functions/errorHandling');
 
