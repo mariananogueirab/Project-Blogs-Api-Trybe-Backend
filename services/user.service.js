@@ -1,6 +1,10 @@
 const Joi = require('joi');
 const { User } = require('../models');
-const { userAlreadyRegistered, usersNotFound, userNotFound } = require('../utils/dictionary/messagesDefault');
+const {
+  userAlreadyRegistered,
+  usersNotFound,
+  userNotFound,
+} = require('../utils/dictionary/messagesDefault');
 const { badRequest, conflict, notFound } = require('../utils/dictionary/statusCode');
 const errorHandling = require('../utils/functions/errorHandling');
 const { generateToken } = require('./authService');
