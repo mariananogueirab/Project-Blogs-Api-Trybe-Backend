@@ -1,7 +1,7 @@
 const Joi = require('joi');
 const { User } = require('../models');
-const { userAlreadyRegistered } = require('../utils/dictionary/messagesDefault');
-const { badRequest, conflict } = require('../utils/dictionary/statusCode');
+const { userAlreadyRegistered, usersNotFound } = require('../utils/dictionary/messagesDefault');
+const { badRequest, conflict, notFound } = require('../utils/dictionary/statusCode');
 const errorHandling = require('../utils/functions/errorHandling');
 const { generateToken } = require('./authService');
 
@@ -37,6 +37,23 @@ const userCreate = async (newUser) => {
   return token;
 };
 
+const findUsers = async () => {
+  const users = await User.findAll({
+    attributes: [
+      'id',
+      'displayName',
+      'email',
+      'image',
+    ],
+  });
+  console.log('find users: ', users);
+
+  if (!users) throw errorHandling(notFound, usersNotFound);
+
+  return users;
+};
+
 module.exports = {
   userCreate,
+  findUsers,
 };

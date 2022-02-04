@@ -23,7 +23,7 @@ const userLogin = async (email, password) => {
   validateLogin(email, password);
 
   const userFound = await User.findOne({ where: { email } });
-  console.log(userFound);
+  console.log('user found: ', userFound);
 
   if (userFound == null) throw errorHandling(badRequest, invalidEntry);
 
