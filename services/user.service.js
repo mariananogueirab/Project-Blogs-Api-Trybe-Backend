@@ -50,7 +50,6 @@ const findUsers = async () => {
       'image',
     ],
   });
-  console.log('find users: ', users);
 
   if (!users) throw errorHandling(notFound, usersNotFound);
 
