@@ -1,5 +1,5 @@
-const { blogPostCreate } = require('../services/post.service');
-const { created } = require('../utils/dictionary/statusCode');
+const { blogPostCreate, findBlogPosts } = require('../services/post.service');
+const { created, success } = require('../utils/dictionary/statusCode');
 
 const createBlogPost = async (req, res, next) => {
   const { id: userId } = req.user;
@@ -14,6 +14,17 @@ const createBlogPost = async (req, res, next) => {
   }
 };
 
+const getBlogPosts = async (req, res, next) => {
+  try {
+    const blogPosts = await findBlogPosts();
+
+    return res.status(success).json(blogPosts);
+  } catch (error) {
+    next(error);
+  }
+};
+
 module.exports = {
   createBlogPost,
+  getBlogPosts,
 };

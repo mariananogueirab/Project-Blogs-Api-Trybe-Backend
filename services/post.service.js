@@ -1,8 +1,7 @@
 const Joi = require('joi');
 const { badRequest } = require('../utils/dictionary/statusCode');
 const errorHandling = require('../utils/functions/errorHandling');
-const { BlogPosts } = require('../models');
-const { Category } = require('../models');
+const { BlogPosts, Category, User } = require('../models');
 const { categoryIdsNotFound } = require('../utils/dictionary/messagesDefault');
 
 const postSchema = Joi.object({
@@ -40,6 +39,15 @@ const blogPostCreate = async (post) => {
   return response.dataValues;
 };
 
+const findBlogPosts = async () => {
+  const blogPosts = await BlogPosts.findAll({
+    include: [{ model: User, as: 'user' }, { model: Category, as: 'categories' }],
+  });
+
+  return blogPosts;
+};
+
 module.exports = {
   blogPostCreate,
+  findBlogPosts,
 };
