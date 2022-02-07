@@ -1,4 +1,4 @@
-const { blogPostCreate, findBlogPosts } = require('../services/post.service');
+const { blogPostCreate, findBlogPosts, findBlogPostById } = require('../services/post.service');
 const { created, success } = require('../utils/dictionary/statusCode');
 
 const createBlogPost = async (req, res, next) => {
@@ -24,7 +24,19 @@ const getBlogPosts = async (req, res, next) => {
   }
 };
 
+const getBlogPostById = async (req, res, next) => {
+  const { id } = req.params;
+  try {
+    const blogPost = await findBlogPostById(id);
+
+    return res.status(success).json(blogPost);
+  } catch (error) {
+    next(error);
+  }
+};
+
 module.exports = {
   createBlogPost,
   getBlogPosts,
+  getBlogPostById,
 };

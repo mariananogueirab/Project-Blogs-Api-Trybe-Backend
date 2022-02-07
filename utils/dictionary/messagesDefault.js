@@ -11,4 +11,5 @@ module.exports = {
   categoryAlreadyExists: 'Category already exists',
   categoriesNotFound: 'Categories not found',
   categoryIdsNotFound: '"categoryIds" not found',
+  postNotExist: 'Post does not exist',
 };
