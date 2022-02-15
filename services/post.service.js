@@ -24,7 +24,7 @@ const validateCategory = async (categoryIds) => Promise.all(
         if (!category) throw errorHandling(badRequest, categoryIdsNotFound);
 },
     ),
-  );
+);
 
 const blogPostCreate = async (post) => {
   const { title, content, categoryIds, userId } = post;
@@ -58,8 +58,29 @@ const findBlogPostById = async (id) => {
   return blogPost;
 };
 
+/* const updateBlogPost = async (post) => {
+  const { title, content, userId, postId } = post;
+  validatePost(title, content);
+  const { user } = findBlogPostById(postId);
+
+  if (user.id !== userId) throw errorHandling(unauthorized, unauthorizedUser);
+
+  const blogPost = await BlogPosts.updateOne(
+    { title, content },
+    {
+    where: { id: postId },
+    include: [{ model: User, as: 'user' }, { model: Category, as: 'categories' }],
+  },
+);
+
+  if (!blogPost) throw errorHandling(notFound, postNotExist);
+
+  return blogPost;
+}; */
+
 module.exports = {
   blogPostCreate,
   findBlogPosts,
   findBlogPostById,
+  /* updateBlogPost, */
 };

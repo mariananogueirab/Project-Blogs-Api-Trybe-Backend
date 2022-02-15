@@ -19,7 +19,7 @@ const validateLogin = (email, password) => {
   if (error) throw errorHandling(badRequest, error.message);
 };
 
-const userLogin = async (email, password) => {
+const userLogin = async (email, password) => { // validar também se a senha tá correta
   validateLogin(email, password);
 
   const userFound = await User.findOne({ where: { email } });
