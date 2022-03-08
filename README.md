@@ -32,7 +32,7 @@ Para fazer um post é necessário usuário e login, portanto foi trabalhada a **
   * `npm test`para rodar todos os restes
   * `npm test tests/req07-createPost.test.js` para rodar um teste específico
 
-## Linter
+### Linter
 
 Para garantir a qualidade do código, foi utilizado o [ESLint](https://eslint.org/) para fazer a sua análise estática.
 
